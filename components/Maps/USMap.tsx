@@ -38,6 +38,14 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 //   { markerOffset: -20, name: "Los Angeles", coordinates: [-118.2426, 34.0549] },
 // ];
 
+interface GeographiesChildrenArgument {
+  geographies: any[];
+  outline: any;
+  borders: any;
+  path: any;
+  projection: any;
+}
+
 const markers = [
   {
     markerOffset: -20,
