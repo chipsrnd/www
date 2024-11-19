@@ -1,0 +1,28 @@
+.cardBadge {
+  position: absolute;
+  display: inline-block;
+  background: var(--mantine-color-red-6);
+  /* height: 1.8rem; */
+  top: 1rem;
+  right: 1.5rem;
+  /* width: 2rem; */
+  padding: 0px 8px;
+  text-align: center;
+  line-height: 1.8rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: white;
+  /* border: 1px solid blue; */
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+}
+
+.cardLink {
+  position: absolute;
+  display: inline-block;
+  bottom: 0.5rem;
+  right: 0.7rem;
+}

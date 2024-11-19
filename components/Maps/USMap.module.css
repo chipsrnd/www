@@ -1,0 +1,12 @@
+.marker {
+  display: block;
+}
+
+.markerText {
+  display: none;
+  fill: #5d5a6d;
+}
+
+.marker:hover + .markerText {
+  display: block;
+}

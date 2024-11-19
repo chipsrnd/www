@@ -1,0 +1,26 @@
+.indicators {
+  /* height: 4px;
+  outline: 2px solid red;
+  outline-offset: -2px; */
+
+  &[data-orientation="horizontal"] {
+    bottom: -15px;
+  }
+}
+
+.indicator {
+  width: 12px;
+  height: 4px;
+  /* outline: 1px solid #adb5bd;
+  outline-offset: -1px; */
+
+  transition: width 250ms ease;
+
+  &[data-orientation="horizontal"] {
+    background-color: #adb5bd;
+  }
+
+  &[data-active] {
+    width: 40px;
+  }
+}
