@@ -3,16 +3,19 @@
 import classes from "./Events.module.css";
 
 // import dayjs from "dayjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Center, Container, Grid, Indicator, Title } from "@mantine/core";
 import { DatePicker, DatePickerProps, DateValue } from "@mantine/dates";
 import { Carousel, Embla } from "@mantine/carousel";
 
 import { EventCard } from "./EventCard";
+import { tree } from "next/dist/build/templates/app-page";
 
 export function Events() {
   const [value, setValue] = useState<Date | null>(null);
   const [embla, setEmbla] = useState<Embla | null>(null);
+  const [display, setDisplay] = useState<Date>(new Date());
+  const [dayList, setDayList] = useState<any[] | null>();
 
   const monthChar = [
     "Jan",
@@ -30,49 +33,42 @@ export function Events() {
   ];
   const evt_list = [
     {
-      day: 6,
+      day: 15,
       month: 11,
-      title: "학회11111",
+      year: 2024,
+      title: "OCP Global Summit",
       description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "the premier event uniting the most forward-thinking minds in open IT Ecosystem development. The Summit presents a unique platform for our Community from around the globe to share their insights, foster partnerships and showcase cutting-edge advancements in open hardware and software",
       link: "",
     },
     {
-      day: 13,
+      day: [18, 19],
       month: 11,
-      title: "학회11111",
-      description: "학회설명",
-      link: "",
-    },
-    {
-      day: 20,
-      month: 11,
-      title: "학회11111",
-      description: "학회설명",
-      link: "",
-    },
-    {
-      day: 21,
-      month: 11,
-      title: "학회11111",
-      description: "학회설명",
-      link: "",
-    },
-    {
-      day: 25,
-      month: 11,
-      title: "학회11111",
-      description: "학회설명",
-      link: "",
-    },
-    {
-      day: 29,
-      month: 11,
-      title: "학회11111",
-      description: "학회설명",
+      year: 2024,
+      title: "OCP Global Summit222",
+      description:
+        "the premier event uniting the most forward-thinking minds in open IT Ecosystem development. The Summit presents a unique platform for our Community from around the globe to share their insights, foster partnerships and showcase cutting-edge advancements in open hardware and software",
       link: "",
     },
   ];
+  // DB에서 year, month는 쿼리로 필터링
+  // 처음에는 현재 연도, 월도 지정
+
+  useEffect(() => {
+    const temp = evt_list.map((item) =>
+      item.year == display.getFullYear() && item.month == display.getMonth() + 1
+        ? item.day
+        : null
+    );
+    setDayList(temp.flat(Infinity));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const onMonthChange = (date: Date) => {
+    setDisplay(date);
+    setDayList([date.getMonth(), 1, 2, 3]);
+    // 지정된 달에 맞게 업데이트
+  };
 
   const dayRenderer: DatePickerProps["renderDay"] = (date) => {
     const day = date.getDate();
@@ -81,7 +77,12 @@ export function Events() {
         size={6}
         color="red"
         offset={-5}
-        disabled={!evt_list.map((item) => item.day).includes(day)}
+        // disabled={!evt_list.map((item) => item.day).includes(day)}
+        disabled={
+          !(display.getMonth() == date.getMonth()
+            ? dayList?.includes(day)
+            : false)
+        }
       >
         <div>{day}</div>
       </Indicator>
@@ -119,6 +120,9 @@ export function Events() {
               highlightToday={true}
               firstDayOfWeek={0}
               renderDay={dayRenderer}
+              onNextMonth={onMonthChange}
+              onPreviousMonth={onMonthChange}
+              onMonthSelect={onMonthChange}
             />
           </Center>
         </Grid.Col>
@@ -138,7 +142,7 @@ export function Events() {
           >
             {evt_list.map((item) => {
               return (
-                <Carousel.Slide key={item.day}>
+                <Carousel.Slide key={item.title}>
                   <EventCard
                     date={item.day + " " + monthChar[item.month - 1]}
                     description={item.description}
