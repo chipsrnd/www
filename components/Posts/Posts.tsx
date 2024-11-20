@@ -34,8 +34,8 @@ const data: Post[] = [
   {
     type: "뉴스",
     bbody: {
-      title: "최태원 SK 회장, 솔리다임 직접 이끈다",
-      link: "https://n.news.naver.com/mnews/article/018/0005885944?rc=N&ntype=RANKING",
+      title: "미국DOE, 반도체 제조 공정의 디지털 트윈 기술 등 첨단 제조기술 발전촉진에 2억 8,500만 달러의 지원",
+      link: "https://www.commerce.gov/news/press-releases/2024/11/chips-america-announces-new-proposed-285-million-award-chips",
       file: null,
     },
     date: "11-15-2024",
