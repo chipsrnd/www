@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import classes from "./Posts.module.css";
 import { Display } from "./Display";
 import { createClient } from "@supabase/supabase-js";
 
