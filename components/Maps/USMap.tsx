@@ -59,7 +59,7 @@ export const USMap = () => {
 
   useEffect(() => {
     fetch()
-      .then((res) => console.log(res))
+      // .then((res) => console.log(res))
       .catch((err) => console.log("DB ACCESS ERROR!!! \n", err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -67,13 +67,14 @@ export const USMap = () => {
   return (
     <Container size={1300}>
       <Grid>
-        <Grid.Col span={{ base: 12, md: 3 }}>
+        {/* <Grid.Col span={{ base: 12, md: 3 }}>
           <Flex h={"100%"} align="center" direction="column" justify="center">
             <Button>Join (Linkedin Group)</Button>
             <Text ta={"center"}>문의: chipsrnd (at) gmail.com</Text>
           </Flex>
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 8.5 }}>
+        </Grid.Col> */}
+        <Grid.Col span={{ base: 0.5, md: 1 }}></Grid.Col>
+        <Grid.Col span={{ base: 11.5, md: 10 }}>
           <ComposableMap projection="geoAlbersUsa">
             <Geographies geography={geoUrl}>
               {({ geographies, outline, borders }) => (
@@ -108,6 +109,7 @@ export const USMap = () => {
             ))}
           </ComposableMap>
         </Grid.Col>
+        <Grid.Col span={{ base: 0.5, md: 1 }}></Grid.Col>
       </Grid>
     </Container>
   );

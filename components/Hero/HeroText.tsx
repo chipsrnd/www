@@ -1,4 +1,4 @@
-import { Title, Text, Button, Container, Space } from "@mantine/core";
+import { Title, Text, Button, Container, Space, Flex } from "@mantine/core";
 import { Dots } from "./Dots";
 import classes from "./HeroText.module.css";
 
@@ -34,9 +34,14 @@ export function HeroText() {
             Serves as a platform for sharing the latest research, exchanging
             ideas, fostering collaboration and addressing challenges.
           </Text>
+          <Space h="xl" />
+          <Flex h={"100%"} align="center" direction="column" justify="center">
+            <a href="https://www.linkedin.com/groups/13117958/" target="_blank">
+              <Button>Join (Linkedin Group)</Button>
+            </a>
+            <Text ta={"center"}>문의: chipsrnd (at) gmail.com</Text>
+          </Flex>
         </Container>
-
-        <Space h="xl" />
 
         {/* <div className={classes.controls}>
           <Button
