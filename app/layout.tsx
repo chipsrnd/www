@@ -1,7 +1,7 @@
 import "@mantine/core/styles.css";
 
 import React from "react";
-import { MantineProvider, ColorSchemeScript, Container } from "@mantine/core";
+import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { theme } from "../theme";
 
 export const metadata = {
@@ -10,11 +10,7 @@ export const metadata = {
 };
 
 import { MenuBar } from "../components/HeadMenu/MenuBar";
-import { HeroText } from "../components/Hero/HeroText";
-import { Events } from "../components/Events/Events";
-import { Posts } from "../components/Posts/Posts";
-import { FeaturesCards } from "../components/FeaturesCards/FeatureCards";
-import { USMap } from "../components/Maps/USMap";
+import Home from "./page";
 
 export default function RootLayout({ children }: { children: any }) {
   return (
@@ -30,14 +26,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <MantineProvider theme={theme}>
           <MenuBar />
-          <HeroText />
-          {/* <FeaturesCards /> */}
-          <USMap />
-          <Events />
-          <div style={{ height: "50px" }}></div>
-          <Posts />
           {children}
-          <div style={{ height: "50px" }}></div>
         </MantineProvider>
       </body>
     </html>

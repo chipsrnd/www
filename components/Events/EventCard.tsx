@@ -7,9 +7,17 @@ interface EventCardProps {
   date: string;
   description: string;
   linkUrl: string;
+  imgUrl: string;
 }
 
-export function EventCard({ date, description, linkUrl }: EventCardProps) {
+export function EventCard({
+  date,
+  description,
+  linkUrl,
+  imgUrl,
+}: EventCardProps) {
+  // console.log(imgUrl);
+
   return (
     <Card
       shadow="sm"
@@ -20,11 +28,7 @@ export function EventCard({ date, description, linkUrl }: EventCardProps) {
     >
       <Card.Section>
         <span className={classes.cardBadge}>{date}</span>
-        <Image
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-8.png"
-          height={120}
-          alt="Norway"
-        />
+        <Image src={imgUrl} height={120} alt="" />
       </Card.Section>
 
       <Group>
@@ -36,7 +40,7 @@ export function EventCard({ date, description, linkUrl }: EventCardProps) {
         >
           {description}
         </Text>
-        <a href={linkUrl}>
+        <a href={linkUrl} target="_blank">
           <PopUp
             className={classes.cardLink}
             height="12"

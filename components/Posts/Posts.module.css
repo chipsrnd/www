@@ -1,5 +1,0 @@
-.tableBody {
-  &[data-mantine-color-scheme="light"] {
-    border: 2px solid red;
-  }
-}

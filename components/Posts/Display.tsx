@@ -64,8 +64,6 @@ export const Display = ({ news }: { news: Post[] }) => {
     []
   );
 
-  console.log(news);
-
   const table = useMantineReactTable({
     columns,
     data: news, //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
