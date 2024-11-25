@@ -79,8 +79,9 @@ export function Events({ supa }: { supa: any }) {
       pDay.setDate(Number(item.startDate.slice(8)));
 
       let eDays = [];
+      let temp = 0;
       for (let i = 0; i < item.duration; i++) {
-        pDay.setDate(pDay.getDate() + i);
+        pDay.setDate(pDay.getDate() + 1);
         eDays.push(pDay.toLocaleDateString("en-CA"));
       }
 
@@ -101,7 +102,7 @@ export function Events({ supa }: { supa: any }) {
         img: item.img,
       };
     });
-
+    console.log(converted);
     setEvents(converted ?? []);
     return converted;
   };
@@ -130,6 +131,7 @@ export function Events({ supa }: { supa: any }) {
         return null;
       }
     });
+    // console.log(res);
 
     dday = res
       .filter((e) => e !== null)
