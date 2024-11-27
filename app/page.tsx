@@ -12,7 +12,6 @@ import { USMap } from "../components/Maps/USMap";
 
 import { useEffect, useState } from "react";
 
-// SUPABASE
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 const supabaseURL = (process.env.NEXT_PUBLIC_SUPABASE_URL as string) ?? "";
@@ -24,17 +23,17 @@ export default function Home() {
 
   useEffect(() => {
     SetSupa(createClient(supabaseURL, supabaseKEY));
-    // console.log("HOME", supa);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    //   // console.log("HOME", supa);
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <HeroText />
       {/* <FeaturesCards /> */}
-      <USMap />
       {supa ? (
         <>
+          <USMap supa={supa} />
           <Events supa={supa} />
           <div style={{ height: "50px" }}></div>
           <Posts supa={supa} />

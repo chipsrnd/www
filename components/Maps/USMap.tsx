@@ -20,10 +20,10 @@ import {
 } from "@mantine/core";
 import classes from "./USMap.module.css";
 
-import { createClient } from "@supabase/supabase-js";
-const supabaseURL = (process.env.NEXT_PUBLIC_SUPABASE_URL as string) ?? "";
-const supabaseKEY =
-  (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY as string) ?? "";
+// import { createClient } from "@supabase/supabase-js";
+// const supabaseURL = (process.env.NEXT_PUBLIC_SUPABASE_URL as string) ?? "";
+// const supabaseKEY =
+//   (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY as string) ?? "";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -37,14 +37,14 @@ interface partnerInfo {
   type: number | null;
 }
 
-const supabase = createClient(supabaseURL, supabaseKEY);
+// const supabase = createClient(supabaseURL, supabaseKEY);
 
-export const USMap = () => {
+export const USMap = ({ supa }: { supa: any }) => {
   const [markers, setMarkers] = useState<Array<any>>([]);
 
   const fetch = async () => {
-    let { data } = await supabase.from("partnerInfo").select("*");
-    const converted = data?.map((item) => {
+    let { data } = await supa.from("partnerInfo").select("*");
+    const converted = data?.map((item: partnerInfo) => {
       return {
         id: item.id,
         offsetX: item.offsetX,

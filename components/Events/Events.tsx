@@ -71,7 +71,8 @@ export function Events({ supa }: { supa: any }) {
 
   const fetch = async () => {
     let { data } = await supa.from("eventsInfo").select();
-    // .eq("startDate", "2024-10-15");
+    // .gte("startDate", "2024-01-01")
+    // .lte("startDate", "2024-12-31");
     const converted = data?.map((item: EventPros) => {
       const pDay = new Date();
       pDay.setFullYear(Number(item.startDate.slice(0, 4)));
@@ -80,7 +81,8 @@ export function Events({ supa }: { supa: any }) {
 
       let eDays = [];
       let temp = 0;
-      for (let i = 0; i < item.duration; i++) {
+      eDays.push(pDay.toLocaleDateString("en-CA"));
+      for (let i = 1; i < item.duration; i++) {
         pDay.setDate(pDay.getDate() + 1);
         eDays.push(pDay.toLocaleDateString("en-CA"));
       }
@@ -102,7 +104,7 @@ export function Events({ supa }: { supa: any }) {
         img: item.img,
       };
     });
-    console.log(converted);
+    // console.log(converted);
     setEvents(converted ?? []);
     return converted;
   };
